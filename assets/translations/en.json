@@ -1,0 +1,11 @@
+{
+  "select_language": "Select Language",
+  "dashboard_title": "Smart Irrigation Dashboard",
+  "english": "English",
+  "hindi": "हिंदी",
+  "fetching_data": "Fetching initial data...",
+  "select_crop": "Select a crop",
+  "soil_moisture": "Soil Moisture",
+  "temp_and_humidity": "Temperature & Humidity",
+  "weather_forecast": "Weather Forecast"
+}

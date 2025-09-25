@@ -1,0 +1,11 @@
+{
+  "select_language": "भाषा चुने",
+  "dashboard_title": "स्मार्ट सिंचाई डैशबोर्ड",
+  "english": "English",
+  "hindi": "हिंदी",
+  "fetching_data": "प्रारंभिक डेटा प्राप्त हो रहा है...",
+  "select_crop": "एक फसल चुनें",
+  "soil_moisture": "मिट्टी की नमी",
+  "temp_and_humidity": "तापमान और आर्द्रता",
+  "weather_forecast": "मौसम का पूर्वानुमान"
+}
