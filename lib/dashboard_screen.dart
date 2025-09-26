@@ -4,6 +4,10 @@ import 'dart:math';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:myapp/community_screen.dart';
+import 'package:myapp/news_screen.dart';
+import 'package:myapp/price_tracker_screen.dart';
+import 'package:myapp/schemes_screen.dart';
 import 'package:myapp/services/notification_service.dart';
 
 import 'irrigation_control_card.dart';
@@ -17,6 +21,8 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
+  int _selectedIndex = 0;
+
   final DatabaseReference _database = FirebaseDatabase.instanceFor(
     app: FirebaseDatabase.instance.app,
     databaseURL: "https://agrosmart-f1233-default-rtdb.asia-southeast1.firebasedatabase.app/",
@@ -54,6 +60,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
     _sensorSubscription?.cancel();
     _simulationTimer?.cancel();
     super.dispose();
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 
   Future<void> _loadInitialData() async {
@@ -147,8 +159,61 @@ class _DashboardScreenState extends State<DashboardScreen> {
     }
   }
 
+  Widget _buildDashboardContent() {
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            if (_crops != null) _buildCropSelector(_crops!),
+            const SizedBox(height: 16),
+            _buildSuggestionCard(),
+            const SizedBox(height: 16),
+            IrrigationControlCard(
+              onValveToggled: (isOpen) {
+                if (mounted) {
+                  setState(() {
+                    _isValveOpen = isOpen;
+                  });
+                }
+              },
+            ),
+            const SizedBox(height: 16),
+            WaterTankCard(waterLevel: _waterLevel, tankCapacity: 1000),
+            const SizedBox(height: 16),
+            _buildSensorCard(
+              icon: Icons.opacity,
+              title: 'soil_moisture'.tr(),
+              value: '${_simulatedSoilMoisture.toStringAsFixed(1)}%',
+              color: Colors.blue,
+            ),
+            const SizedBox(height: 16),
+            _buildSensorCard(
+              icon: Icons.thermostat,
+              title: 'temp_and_humidity'.tr(),
+              value: '$_temperature°C / $_humidity%',
+              color: Colors.orange,
+            ),
+            const SizedBox(height: 16),
+            _buildStatusCard(_status),
+            const SizedBox(height: 16),
+            _buildWeatherCard(),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    final List<Widget> _widgetOptions = <Widget>[
+      _buildDashboardContent(),
+      const PriceTrackerScreen(),
+      const CommunityScreen(),
+      const NewsScreen(),
+      const SchemesScreen(),
+    ];
+
     if (_isLoading) {
       return Scaffold(
         appBar: AppBar(title: const Text('dashboard_title').tr()),
@@ -167,47 +232,37 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
     return Scaffold(
       appBar: AppBar(title: const Text('dashboard_title').tr()),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              if (_crops != null) _buildCropSelector(_crops!),
-              const SizedBox(height: 16),
-              _buildSuggestionCard(),
-              const SizedBox(height: 16),
-              IrrigationControlCard(
-                onValveToggled: (isOpen) {
-                  if(mounted) {
-                    setState(() {
-                      _isValveOpen = isOpen;
-                    });
-                  }
-                },
-              ),
-              const SizedBox(height: 16),
-              WaterTankCard(waterLevel: _waterLevel, tankCapacity: 1000),
-              const SizedBox(height: 16),
-              _buildSensorCard(
-                icon: Icons.opacity,
-                title: 'soil_moisture'.tr(),
-                value: '${_simulatedSoilMoisture.toStringAsFixed(1)}%',
-                color: Colors.blue,
-              ),
-              const SizedBox(height: 16),
-              _buildSensorCard(
-                icon: Icons.thermostat,
-                title: 'temp_and_humidity'.tr(),
-                value: '$_temperature°C / $_humidity%',
-                color: Colors.orange,
-              ),
-              const SizedBox(height: 16),
-              _buildStatusCard(_status),
-              const SizedBox(height: 16),
-              _buildWeatherCard(),
-            ],
+      body: _widgetOptions.elementAt(_selectedIndex),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.dashboard),
+            label: 'Dashboard',
           ),
-        ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.track_changes),
+            label: 'Prices',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.people),
+            label: 'Community',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.article),
+            label: 'News',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_balance),
+            label: 'Schemes',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Theme
+            .of(context)
+            .colorScheme
+            .primary,
+        unselectedItemColor: Colors.grey,
+        onTap: _onItemTapped,
       ),
     );
   }
@@ -230,7 +285,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             );
           }).toList(),
           onChanged: (newValue) {
-            if(mounted) {
+            if (mounted) {
               setState(() {
                 _selectedCrop = newValue;
                 _updateIrrigationSuggestion();
