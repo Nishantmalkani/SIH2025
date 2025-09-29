@@ -34,18 +34,25 @@ class _DashboardScreenState extends State<DashboardScreen> {
   String? _selectedCrop;
   String _irrigationSuggestion = "Select a crop to get a suggestion.";
 
-  // State variables for sensor and crop data
   Map<dynamic, dynamic>? _crops;
   double _waterLevel = 0.0;
   num _temperature = 0;
   num _humidity = 0;
   String _status = 'N/A';
 
-  // Simulation variables
   Timer? _simulationTimer;
   double _simulatedSoilMoisture = 70.0;
   bool _isValveOpen = false;
   bool _isLoading = true;
+
+  // List of titles for the AppBar
+  static final List<String> _appBarTitles = [
+    'dashboard_title', // Key for localization
+    'Real-Time Price Tracker',
+    'Community Forum',
+    'Farmer News',
+    'Government Schemes in Sikkim',
+  ];
 
   @override
   void initState() {
@@ -69,13 +76,31 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 
   Future<void> _loadInitialData() async {
-    await _checkAndCreateCropsData();
-    final snapshot = await _database.child('crops').get();
-    if (mounted && snapshot.exists) {
-      setState(() {
-        _crops = snapshot.value as Map<dynamic, dynamic>?;
-        _isLoading = false;
-      });
+    try {
+      await _checkAndCreateCropsData();
+      final snapshot = await _database.child('crops').get();
+      if (mounted) {
+        if (snapshot.exists && snapshot.value != null) {
+          setState(() {
+            _crops = snapshot.value as Map<dynamic, dynamic>?;
+          });
+        } else {
+          print("Crops data not found or is null after check/create.");
+        }
+      }
+    } catch (e) {
+      print("Error loading initial data: $e");
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Failed to load initial data: $e")),
+        );
+      }
+    } finally {
+      if (mounted) {
+        setState(() {
+          _isLoading = false;
+        });
+      }
     }
   }
 
@@ -231,8 +256,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
     }
 
     return Scaffold(
-      appBar: AppBar(title: const Text('dashboard_title').tr()),
-      body: _widgetOptions.elementAt(_selectedIndex),
+      appBar: AppBar(
+        // Use the title from _appBarTitles based on _selectedIndex
+        // The first title is a localization key, others are direct strings
+        title: Text(_selectedIndex == 0 ? _appBarTitles[_selectedIndex].tr() : _appBarTitles[_selectedIndex]),
+      ),
+      body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -257,12 +288,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Theme
-            .of(context)
-            .colorScheme
-            .primary,
+        selectedItemColor: Theme.of(context).colorScheme.primary,
         unselectedItemColor: Colors.grey,
         onTap: _onItemTapped,
+        type: BottomNavigationBarType.fixed, 
       ),
     );
   }

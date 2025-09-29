@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:myapp/dashboard_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:myapp/services/notification_service.dart';
+import 'package:myapp/signin_screen.dart'; // Import SignInScreen
 import 'firebase_options.dart';
 import 'language_selection_screen.dart';
 
@@ -133,7 +134,8 @@ class MyApp extends StatelessWidget {
           localizationsDelegates: context.localizationDelegates,
           supportedLocales: context.supportedLocales,
           locale: context.locale,
-          home: const LanguageSelectionScreen(),
+          home: const SignInScreen(), // Changed to SignInScreen
+          debugShowCheckedModeBanner: false, // Added this line
         );
       },
     );

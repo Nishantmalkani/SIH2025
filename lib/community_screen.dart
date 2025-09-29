@@ -5,9 +5,10 @@ class CommunityScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Community Forum')),
-      body: const Center(child: Text('Community Screen')),
+    // This screen should only return its body content.
+    // The Scaffold and AppBar are provided by DashboardScreen.
+    return const Center(
+      child: Text('Community Screen'),
     );
   }
 }

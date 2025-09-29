@@ -5,9 +5,10 @@ class PriceTrackerScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Real-Time Price Tracker')),
-      body: const Center(child: Text('Price Tracker Screen')),
+    // This screen should only return its body content.
+    // The Scaffold and AppBar are provided by DashboardScreen.
+    return const Center(
+      child: Text('Price Tracker Screen'),
     );
   }
 }
