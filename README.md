@@ -1,16 +1,76 @@
-# myapp
+# 🌾 AgroSmart: Implementation of Smart Agriculture for Efficient Cultivation in Hilly Regions
 
-A new Flutter project.
+## Project Overview
 
-## Getting Started
+**AgroSmart** is a low-cost, smart irrigation and crop advisory solution designed to combat water scarcity and climate variability in the challenging mountainous terrain of **Sikkim, India**. By integrating real-time environmental sensors with predictive intelligence and crucial farmer-centric data services, AgroSmart aims to maximize crop yield while minimizing water and energy usage.
 
-This project is a starting point for a Flutter application.
+* **Problem Statement ID:** SIH 25062
+* **Theme:** Agriculture, FoodTech & Rural Development
+* **Category:** Hardware
+* **Team Name:** CODE-TIVATORS
+* **Proposed Solution:** A sensor-based system combining smart irrigation (automated valves) with a mobile application for remote monitoring, specialized advisory, and market information.
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## ✨ Features
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+AgroSmart provides a comprehensive solution for the modern organic farmer:
+
+### 1. Precision Irrigation & Monitoring (Hardware Core)
+* **Real-Time Data Collection:** Monitors key environmental parameters including **Soil Moisture**, **Temperature**, **Humidity (via DHT11/DHT22)**, and **Water Tank Level (via Ultrasonic Sensor)**.
+* **Smart Automation:** Controls irrigation valves (**RELAY**) automatically based on sensor data and crop-specific optimal moisture levels.
+* **Sustainable Power:** Uses **Solar Power + Battery Backup** to ensure continuous, off-grid operation and overcome power supply challenges in remote areas.
+
+### 2. Intelligent Advisory & Digital Tools (The App)
+* **ML-Driven Irrigation:** Utilizes **Machine Learning** models to predict *when* irrigation is precisely needed.
+* **AI-Powered Health Check:** Allows farmers to upload a photo of a leaf to get a diagnosis, a full disease report, and general farm advisory using the **Gemini API**.
+* **Crop Live Price Tracker:** Displays real-time prices (Mandi/Export) for key crops using the **E-nam API**.
+* **Government Schemes Portal:** Provides localized information and an eligibility checker for Central and **Sikkim Govt. Schemes**.
+* **Community & News Hub:** Delivers agricultural updates and fosters peer-to-peer engagement in **regional languages**.
+
+---
+
+## 💻 Technical Stack
+
+| Component | Technology / Protocol | Function |
+| :--- | :--- | :--- |
+| **Microcontroller** | **ESP32** (for low cost & integrated Wi-Fi) | Gathers sensor data, processes local logic, and controls actuators. |
+| **Communication** | **Wi-Fi / MQTT Protocol** | Sends data from the field to the Cloud in real-time. |
+| **Cloud Database** | **Firebase** | Securely stores sensor data, manages user authentication, and hosts the crop database. |
+| **Mobile Application** | **Flutter (Dart)** | Cross-platform (Android/iOS) frontend for remote control and data visualization. |
+| **AI/Intelligence** | **Gemini API** | Visual analysis for crop health and natural language report generation. |
+
+### Future Scope / Scalability
+To overcome limitations of Wi-Fi range and power consumption for large, remote fields, the system is designed to be scalable by adopting **LoRaWAN / LTE-M** communication protocols in later phases.
+
+---
+
+## 📊 Competitive Analysis
+
+AgroSmart’s key advantage is its low hardware cost and dedicated **localized features** tailored for the smallholder farmer in Sikkim.
+
+| Feature | Our Solution (AgroSmart) | FASAL (Direct IoT Platform) | AgroStar (Digital Advisory) |
+| :--- | :--- | :--- | :--- |
+| **Sensor-Based Smart Irrigation** | ✅ | ✅ | ❌ |
+| **Affordable, Low-Cost Hardware** | ✅ | ❌ | ❌ |
+| **Real-Time Price Tracker (E-nam)** | ✅ | ❌ | ✅ |
+| **Govt. Scheme Checker (Localized)** | ✅ | ❌ | ❌ |
+| **Community/Peer-to-Peer Hub** | ✅ | ❌ | ✅ |
+
+---
+
+
+
+---
+
+## 👥 Team (CODE-TIVATORS)
+
+* [Team Member 1 Bhavin Umatiya] 
+* [Team Member 2 Nishant Malkani] 
+* [Team Member 3 Anubhav Bhavsar]
+* [Team Member 4 Suhani Chaplot]
+* [Team Member 5 Aditya Lalchandani]
+* [Team Member 6 Shubham Prajapati]
+
+
+---
