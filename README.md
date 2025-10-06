@@ -1,5 +1,16 @@
 # 🌾 AgroSmart: Implementation of Smart Agriculture for Efficient Cultivation in Hilly Regions
 
+## Project Details
+
+| Detail | Information |
+| :--- | :--- |
+| **Problem Statement ID** | **SIH 25062** |
+| **Organization** | Government of Sikkim |
+| **Department** | Department of Higher & Technical Education |
+| **Theme** | Agriculture, FoodTech & Rural Development |
+| **Category** | Hardware |
+| **Team Name** | CODE-TIVATORS |
+
 ## Project Overview
 
 **AgroSmart** is a low-cost, smart irrigation and crop advisory solution designed to combat water scarcity and climate variability in the challenging mountainous terrain of **Sikkim, India**. By integrating real-time environmental sensors with predictive intelligence and crucial farmer-centric data services, AgroSmart aims to maximize crop yield while minimizing water and energy usage.
@@ -46,7 +57,6 @@ AgroSmart provides a comprehensive solution for the modern organic farmer:
 * **Government Schemes Portal:** Provides localized information and an eligibility checker for Central and **Sikkim Govt. Schemes**.
 * **Community & News Hub:** Delivers agricultural updates and fosters peer-to-peer engagement in **regional languages**.
 
-
 ---
 
 ## 💻 Technical Stack
@@ -80,16 +90,14 @@ AgroSmart’s key advantage is its low hardware cost and dedicated **localized f
 
 
 
----
-
 ## 👥 Team (CODE-TIVATORS)
 
-* [Team Member 1 Bhavin Umatiya] 
-* [Team Member 2 Nishant Malkani] 
-* [Team Member 3 Anubhav Bhavsar]
-* [Team Member 4 Suhani Chaplot]
-* [Team Member 5 Aditya Lalchandani]
-* [Team Member 6 Shubham Prajapati]
-
+* **Bhavin Umatiya**
+* **Nishant Malkani**
+* **Anubhav Bhavsar**
+* **Suhani Chaplot**
+* **Aditya Lalchandani**
+* **Shubham Prajapati**
 
 ---
+
