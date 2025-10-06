@@ -41,8 +41,8 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAzFDq6gU7h3vfVzXz-ceYfuEvmzGlBejM',
-    appId: '1:293217955343:web:02d9d2e54452550c6e3d7a',
+   // apiKey: 'AIzaSyAzFDq6gU7h3vfVzXz-ceYfuEvmzGlBejM',
+   // appId: '1:293217955343:web:02d9d2e54452550c6e3d7a',
     messagingSenderId: '293217955343',
     projectId: 'agrotech-2c731',
     authDomain: 'agrotech-2c731.firebaseapp.com',
@@ -51,16 +51,16 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAC4at5D5kiaFxxbuEAnenmxwJzqGGS2eg',
-    appId: '1:293217955343:android:074e19a0d0a3a3286e3d7a',
+    //apiKey: 'AIzaSyAC4at5D5kiaFxxbuEAnenmxwJzqGGS2eg',
+    //appId: '1:293217955343:android:074e19a0d0a3a3286e3d7a',
     messagingSenderId: '293217955343',
     projectId: 'agrotech-2c731',
     storageBucket: 'agrotech-2c731.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBGJo1_759E3Vy1YwlOfvhNiG8aJKxsPsg',
-    appId: '1:293217955343:ios:c02cc449157edc2e6e3d7a',
+    //apiKey: 'AIzaSyBGJo1_759E3Vy1YwlOfvhNiG8aJKxsPsg',
+    //appId: '1:293217955343:ios:c02cc449157edc2e6e3d7a',
     messagingSenderId: '293217955343',
     projectId: 'agrotech-2c731',
     storageBucket: 'agrotech-2c731.firebasestorage.app',
@@ -68,8 +68,8 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBGJo1_759E3Vy1YwlOfvhNiG8aJKxsPsg',
-    appId: '1:293217955343:ios:c02cc449157edc2e6e3d7a',
+   // apiKey: 'AIzaSyBGJo1_759E3Vy1YwlOfvhNiG8aJKxsPsg',
+    //appId: '1:293217955343:ios:c02cc449157edc2e6e3d7a',
     messagingSenderId: '293217955343',
     projectId: 'agrotech-2c731',
     storageBucket: 'agrotech-2c731.firebasestorage.app',
@@ -77,8 +77,8 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyAzFDq6gU7h3vfVzXz-ceYfuEvmzGlBejM',
-    appId: '1:293217955343:web:107d1b5e346c60cc6e3d7a',
+   // apiKey: 'AIzaSyAzFDq6gU7h3vfVzXz-ceYfuEvmzGlBejM',
+   // appId: '1:293217955343:web:107d1b5e346c60cc6e3d7a',
     messagingSenderId: '293217955343',
     projectId: 'agrotech-2c731',
     authDomain: 'agrotech-2c731.firebaseapp.com',
